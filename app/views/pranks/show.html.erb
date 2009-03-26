@@ -1,0 +1,49 @@
+<% title "#{@prank.title} Prank"  %>
+<div id="title">
+  <%- if owner_or_admin?(@prank) -%>
+  <%= link_to 'Edit Prank', edit_prank_path(@prank), :class => 'fltrt' %>
+  <%- end -%>
+  <h2><%=h @prank.title %> </h2>
+  <span id="category-list"><%= 'Category'.pluralize %>: <%= @prank.categories.collect{|c| link_to(c.name, category_path(c)) }.join(' | ') %></span>
+</div>
+<div id="leftbar">
+	<%= link_to image_tag(@prank.profile_image(:medium), :class => 'profile-pic'), photos_url %>
+	<div id="star-ratings">
+		<%= render :partial => "ratings/rating", :object => @prank %>
+	</div>
+	<div id="author">
+		<h3>Creator:</h3> <%= link_to image_tag(@prank.user.profile_image(:tiny_square)), @prank.user %> <%= link_to @prank.user.login, @prank.user %>
+	</div>
+	<div id="vids">
+		<h3>Videos</h3>
+	</div>
+</div>
+<div id="mainContent">
+	<h3>Summary:</h3>
+	<p><%=h @prank.summary %></p>
+	<h3>Tools: (<%= @prank.tools.nil? ? '0' : @prank.tools.size %>)</h3>
+	<%- unless @prank.tools.blank? -%>
+	<ul class="tools-list">
+		<%= render :partial => 'tools/list_tool', :collection => @prank.tools %>
+	</ul>
+	<%- end -%>
+	<h3>Target:</h3>
+	<p><%=h @prank.targets %></p>
+	<h3>How-To:</h3>
+	<p><%= simple_format sanitize(@prank.instructions) %></p>
+</div>
+<%= render :partial => 'tag_cloud' unless @tags.blank? %>
+<%- unless !logged_in? and @comments.empty? -%>
+<div id="comments">
+	<div id="comments-top">
+		<h3><span id="comment-count"><%= pluralize @comments.size, 'Comment' unless @comments.empty? %></span>
+		<%- if logged_in? -%>
+			<span id="new_comment_link"><%= link_to_remote "Add Comment", :url => new_prank_comment_path(@prank), :method => :get %></span>
+		<%- end -%></h3>
+		<div id="new_comment_form"></div>
+	</div>
+	<div id="comments-entries">
+		<%= render(:partial => 'comment', :collection => @comments) unless @comments.empty? %>
+	</div>
+</div>
+<%- end -%>

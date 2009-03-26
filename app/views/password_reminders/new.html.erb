@@ -1,0 +1,13 @@
+<div id="title">
+  <h2>Password Reminder</h2>
+  <p class="small-link">Not a member yet? <%= link_to 'Sign Up', signup_path %></p>
+</div>
+<h3>Enter your information, and a reminder email will be sent to you shortly.</h3>
+<%- form_for :user, :url => password_reminders_path do |f| -%>
+  <div class="required">
+	<%= f.label :email, 'Email Address:' %><%= f.text_field :email, :class => 'inputText' %>
+  </div>
+  <div class="submit">
+	<%= f.submit 'Send Reminder' %>
+  </div>
+<%- end -%>

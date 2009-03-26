@@ -1,0 +1,16 @@
+<% title "#{@prank.title} | New Album" %>
+<div id="title">
+  <h2><%= @prank.title %><span class="grey">Create A New Album</span></h2>
+  <p class="small-link"><%= link_to 'Back to prank', @prank %> | <%= link_to 'Back to photos', photos_path(@prank) %></p>
+</div>
+<%- form_for(@album, :url => prank_albums_path(:prank_id => @prank)) do |f| -%>
+  <%= f.error_messages %>
+	
+  <div class="optional">
+    <%= f.label :title, 'Title:' %><%= f.text_field :title, :class => 'inputText' %>
+    <small>New album name.</small>
+  </div>
+  <div class="submit">
+	<%= submit_tag 'Create' %>
+  </div>
+<%- end -%>

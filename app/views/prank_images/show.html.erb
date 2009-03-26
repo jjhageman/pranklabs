@@ -1,0 +1,32 @@
+<div id="title">
+  <h2><%= @prank.title %><span class="grey"> <%=h @image.caption %></span></h2>
+  <p class="small-link"><%= link_to 'Back to prank', @prank %> | <%= link_to 'Back to photos', photos_path(@prank) %></p>
+</div>
+<%- if image_owner_or_admin?(@image) -%>
+<ul id="tools">
+	<li><%= link_to 'Edit Caption', edit_prank_image_path %></li>
+	<li><%= link_to '[x] Delete Image', prank_image_path, :confirm => 'Are you sure you want to delete the image?', :method => :delete %></li>
+</ul>
+<%- end -%>
+<%= image_tag @image.public_filename, :class => 'full-pic' %>
+<div id="caption">
+<%- if @image.caption.blank? -%>
+	<p><%= link_to 'Add Caption?', edit_prank_image_path, :class => 'small-link' if owner_or_admin?(@prank) %></p>
+<%- else -%>
+	<p><%=h @image.caption %></p>
+<%- end -%>
+</div>
+<%- unless !logged_in? and @comments.empty? -%>
+<div id="image-comments">
+	<div id="comments-top">
+		<h3><span id="comment-count"><%= pluralize @comments.size, 'Comment' unless @comments.empty? %></span>
+		<%- if logged_in? -%>
+			<span id="new_comment_link"><%= link_to_remote "Add Comment", :url => new_prank_image_comment_path(@prank, @image), :method => :get %></span>
+		<%- end -%></h3>
+		<div id="new_comment_form"></div>
+	</div>
+	<div id="comments-entries">
+		<%= render(:partial => "album_images/comment", :collection => @comments) unless @comments.empty? %>
+	</div>
+</div>
+<%- end -%>

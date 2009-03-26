@@ -1,0 +1,16 @@
+<% title "#{@user.login} | Image Upload" %>
+<div id="title">
+  <h2><%= @user.login %><span class="grey"> Image Upload</span></h2>
+  <p class="small-link"><%= link_to 'Back to profile', @user %></p>
+</div>
+<%= error_messages_for :image %>
+
+<%- form_for(:image, :url => user_image_index_path(@user), :html => { :multipart => true }) do |f| -%>
+  <div class="required">
+    <%= f.label :uploaded_data, 'Upload a photo:' %><%= f.file_field :uploaded_data, :class => 'inputText' %>
+  </div>
+  <div class="submit">
+    <%= f.submit 'Upload' %>
+    <%= f.submit "Cancel", :id => "cancel" %>
+  </div>
+<%- end -%>

@@ -1,0 +1,27 @@
+<div id="rightbar">
+	<%= render :partial => 'tags/full_tag_cloud' %>
+	<div id="recent-pranks">
+	<h3>Popular Pranks</h3>
+		<ul>
+			<%= render(:partial => "popular_prank", :collection => @popular_pranks) %>
+		</ul>
+	</div>
+</div>
+<div id="homeContent">
+  <div id="featurePrank">
+	<h1><%= link_to h(@featured_prank.title), @featured_prank %></h1>
+	<p><%= link_to image_tag(@featured_prank.profile_image, :class => 'profile-pic'), @featured_prank %></p>
+	<h3>Summary:</h3>
+	<p><%= trunc_prank_text(@featured_prank, @featured_prank.summary) %></p>
+	<h3>Target:</h3>
+	<p><%= trunc_prank_text(@featured_prank, @featured_prank.targets) %></p>
+	<h3>How-To:</h3>
+	<p><%= trunc_prank_instructions(@featured_prank, @featured_prank.instructions) %></p>
+	<h3>Similar:</h3>
+	<p>
+		<%- tag_cloud @featured_tags, %w(css1 css2 css3 css4) do |tag, css_class| -%>
+			<%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+		<%- end -%>
+	</p>
+  </div>
+</div>

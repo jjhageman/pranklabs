@@ -1,0 +1,23 @@
+<% title "#{@user.login} | #{@title || 'Image'}"  %>
+<div id="title">
+  <%- if logged_in? -%>
+  <div id="title-right">
+	<h4>TOOLS</h4>
+    <p>- <%= link_to 'Edit Photo', edit_user_image_path if current_user_or_admin?(@user) %></p>
+  </div>
+  <%- end -%>
+  <h2><%= @user.login %><span class="grey"> <%=h @user.image.blank? ? 'Default' : @user.image.caption %></span></h2>
+  <p class="small-link"><%= link_to 'Back to profile', @user %></p>
+</div>
+<%- if @user.image.blank? -%>
+	<p>No user profile image yet. <%= link_to "Upload one?", new_user_image_path if current_user_or_admin?(@user) %></p>
+<%- else -%>
+<%= image_tag @user.image.public_filename, :class => 'full-pic' %>
+	<div id="caption">
+	<%- if @user.image.caption.blank? -%>
+	  <p><%= link_to 'Add Caption?', edit_user_image_path, :class => 'small-link' %></p>
+	<%- else -%>
+		<%=h @user.image.caption %>
+	<%- end -%>
+<%- end -%>
+</div>

@@ -1,0 +1,8 @@
+<div class="user-pic">
+	<div class="pic">
+		<%= link_to image_tag(user_image.public_filename(:small_square), :class => 'tiny-pic'), user_image.prank %>
+	</div>
+	<div class="details">
+		<h4><%= link_to user_image.prank.title, user_image.prank %></h4>
+	</div>
+</div>

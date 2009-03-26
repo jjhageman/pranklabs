@@ -1,0 +1,10 @@
+<li>
+	<h3><%= link_to user_prank.title, user_prank %></h3>
+	<div class="pic">
+		<%= link_to image_tag(user_prank.profile_image(:small_square), :class => 'tiny-pic'), user_prank %>
+	</div>
+	<div class="details">
+		<p><%= user_prank.summary %></p>
+		<p><strong>Targets:</strong> <%= user_prank.targets %></p>
+	</div><br class="clearfloat" />
+</li>

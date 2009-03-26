@@ -1,0 +1,4 @@
+<li class="tool">
+	<%= label_tag 'prank[tools][]', "Tools:" %><%= text_field_tag 'prank[tools][]', tools.blank? ? nil : tools, :class => 'inputText' %><%= link_to_function '[x] remove', "$(this).up('.tool').remove()" unless tools_counter < 1 %>
+	<small>Add a tool to be used in your prank.</small>
+</li>

@@ -1,0 +1,14 @@
+<%- remote_form_for :comment, :url => @form_path do |f| -%>
+<div class="required">
+	<%= f.label :body, 'Your Comment:' %>
+	<%= f.text_area :body, :cols => 36, :rows => 5 %>
+</div>
+<div class="submit">
+	<%= f.submit 'Say It' %>
+	<%= button_to_function "Cancel" do |page| 
+			page[:new_comment_form].visual_effect :blind_up
+			page.show "new_comment_link"
+		end
+	%>
+</div>
+<%- end -%>

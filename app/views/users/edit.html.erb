@@ -1,0 +1,29 @@
+<% title "PrankLabs | #{@user.login}" %>
+<div id="title">
+  <h2><%= @user.login %><span class="grey">Edit</span></h2>
+  <p class="small-link"><%= link_to 'Back to profile', @user %></p>
+</div>
+<div id="images">
+  <%= link_to image_tag(@user.profile_image(:thumb), :class => 'profile-pic'), user_image_path(@user) %><br />
+  <%= link_to "Edit Image", edit_user_image_path(@user), :class => 'small-link' %>
+</div>
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+  <div class="required">
+    <%= f.label :email, 'Email:' %> <%= f.text_field :email, :class => 'inputText' %>
+  </div>
+<%- if admin? -%>
+  <div class="optional">
+    <label for="enabled" class="labelCheckbox"><%= f.check_box :enabled %> Enabled</label>
+  </div>
+  <div class="optional">
+    <label for="admin" class="labelCheckbox"><%= f.check_box :admin %> Admin</label>
+  </div>
+  <div class="optional">
+    <label for="email_verified" class="labelCheckbox"><%= f.check_box :email_verified %> Email Verified</label>
+  </div>
+<%- end -%>
+  <div class="submit">
+	<%= submit_tag 'Update' %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  rater_id: 1
+  rated_id: 1
+  rated_type: Prank
+  rating: 4
+
+two:
+  id: 2
+  rater_id: 2
+  rated_id: 3
+  rated_type: Prank
+  rating: 5

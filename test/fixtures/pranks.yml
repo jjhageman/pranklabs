@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: Penny Up A Door
+  summary: Lock someone in their room using only pennies.
+  tools: A few pennies.
+  targets: Anyone inside a room
+  instructions: Place pennies in the victim's door jam.
+  created_at: <%= 5.days.ago.to_s :db %>
+  updated_at: <%= 2.days.ago.to_s :db %>
+  photos_count: 5
+  user_id: 1
+  comments_count: 10
+  rating_count: 3
+  rating_total: 14
+  rating_avg: 4
+  cached_tag_list: penny lock
+
+two:
+  title: Upper Deck
+  summary: Cause victim to have poopy water with every flush
+  tools: Bowel movement
+  targets: Anyone with a toilet
+  instructions: Deficate in your victim's upper toilet tank.
+  created_at: <%= 5.days.ago.to_s :db %>
+  updated_at: <%= 2.days.ago.to_s :db %>
+  photos_count: 2
+  user_id: 2
+  comments_count: 9
+  rating_count: 2
+  rating_total: 8
+  rating_avg: 4
+  cached_tag_list: poop

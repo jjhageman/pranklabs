@@ -1,0 +1,9 @@
+<div id="title">
+  <h2><%= @user.login %><span class="grey"> Images</span></h2>
+  <p class="small-link"><%= link_to 'Back to profile', @user %></p>
+</div>
+<%- if @user.image.blank? -%>
+	<p>You have not uploaded an image yet. <%= link_to "Upload one?", new_user_image_path %></p>
+<%- else -%>
+	<%= link_to image_tag(@user.image.public_filename(:thumb), :class => 'album-pic'), user_image_path %>
+<%- end -%>

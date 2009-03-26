@@ -1,0 +1,13 @@
+<span class="inline-rating">
+	<ul class="star-rating small-star">
+		<li class="current-rating" style="width:<%= (rating.rating_average.nil?) ? 0 : (rating.rating_average * 20).to_i %>%">Currently <%= rating.rating_average %>/5 Stars.</li>
+		<%- unless !logged_in? -%>
+		<li><%= link_to_remote("1", :url=> {:action => :rate_prank, :id => rating.id, :rating => 1 }, :html => { :class => 'one-star', :title => '1 star out of 5' } ) %></li>
+		<li><%= link_to_remote("2", :url=> {:action => :rate_prank, :id => rating.id, :rating => 2 }, :html => { :class => 'two-stars', :title => '2 stars out of 5' } ) %></li>
+		<li><%= link_to_remote("3", :url=> {:action => :rate_prank, :id => rating.id, :rating => 3 }, :html => { :class => 'three-stars', :title => '3 stars out of 5' } ) %></li>
+		<li><%= link_to_remote("4", :url=> {:action => :rate_prank, :id => rating.id, :rating => 4 }, :html => { :class => 'four-stars', :title => '4 stars out of 5' } ) %></li>
+		<li><%= link_to_remote("5", :url=> {:action => :rate_prank, :id => rating.id, :rating => 5 }, :html => { :class => 'five-stars', :title => '5 stars out of 5' } ) %></li>
+		<%- end -%>
+	</ul>
+</span>
+<span class="rate-count">(<%= pluralize @prank.rated_count, 'rating' %>)</span>

@@ -1,0 +1,7 @@
+<%= title "#{@tag} Pranks" %>
+<div id="title">
+	<h2><%= @tag %> Pranks</h2>
+</div>
+<%= render :partial => 'pranks/pranks_table' %>
+<%= will_paginate @pranks %><br /><br />
+<%= render :partial => 'full_tag_cloud' %>

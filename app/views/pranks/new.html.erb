@@ -1,0 +1,41 @@
+<% title "PrankLabs | New Prank" %>
+<div id="title">
+  <h2>Add your prank</h2>
+  <p class="small-link"><%= link_to 'Back to pranks', pranks_path %> | <%= link_to 'Back to profile', current_user %></p>
+</div>
+<% form_for(@prank) do |f| %>
+  <%= f.error_messages %>
+  <div class="required">
+    <%= f.label :title, 'Prank Name:' %> <%= f.text_field :title, :class => 'inputText' %>
+  </div>
+  <div class="required">
+    <%= f.label :summary, 'Summary:' %> <%= f.text_area :summary, :cols => 30, :rows => 2, :class => 'inputText' %>
+	<small>Write a brief summary describing your prank.</small>
+  </div>
+  <div class="required">
+	<ul id="prank-tools">
+		<%= render :partial => 'tools', :collection => @prank.tools %>
+	</ul>
+	<%= add_tool_link 'Add Another Tool' %>
+  </div>
+  <div class="required">
+    <%= f.label :targets, 'Targets:' %> <%= f.text_area :targets, :cols => 30, :rows => 5, :class => 'inputText' %>
+	<small>List the people targeted as victims of your prank.</small>
+  </div>
+  <div class="required">
+    <%= f.label :instructions, 'Instructions:' %> <%= f.text_area :instructions, :cols => 30, :rows => 10, :class => 'inputText' %>
+	<small>Detail the steps, and any other advice, used to make the prank a success.</small>
+  </div>
+  <div class="required">
+	<%= label_tag 'prank[category_ids][]', 'Categories:' %>
+	<%= render :partial => 'categories', :collection => Category.find(:all) %>
+	<small>Check all categories that apply to your prank.</small>
+  </div>
+  <div class="optional">
+  	<%= label_tag 'tags', 'Tags:' %> <%= text_field_tag 'tags', nil, :class => 'inputText' %>
+	<small>Enter tags to categorize your prank. Example: office, tinfoil, cubicle</small>
+  </div>
+  <div class="submit">
+	<%= submit_tag 'Create' %>
+  </div>
+<% end %>

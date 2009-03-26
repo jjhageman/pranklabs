@@ -1,0 +1,2 @@
+<%= check_box_tag 'prank[category_ids][]', categories.id, @prank.categories.include?(categories), :class => (categories_counter > 0 ? 'labelless inputCheckbox' : 'inputCheckbox') %>
+<%= categories.name %><br />

@@ -1,0 +1,17 @@
+<div id="title">
+	<h2>User Rankings</h2>
+</div>
+<div id="user-features-left">
+<h3>Most Active Pranksters</h3>
+<table>
+	<tr><th>Pranks</th><th colspan="2">Prankster</th></tr>
+	<%= render(:partial => "most_pranks", :collection => @most_pranks) %>
+</table>
+</div>
+<div id="user-features-right">
+	<h3>Most Images</h3>
+	<table>
+		<tr><th>Images</th><th colspan="2">Prankster</th></tr>
+		<%= render(:partial => "most_albums", :collection => @most_albums) %>
+	</table>
+</div>

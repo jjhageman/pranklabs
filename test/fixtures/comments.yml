@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  prank_id: 1
+  image_id: 1
+  body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque, lorem in interdum pharetra, nisi pede vulputate urna, vel mattis dui mi mollis mi. Vivamus sem diam, venenatis vitae, posuere non, posuere non, neque. Proin sit amet justo dignissim massa pharetra pretium. Pellentesque ante odio, cursus vel, fermentum eget, mattis vitae, erat. Fusce et augue at odio placerat condimentum. Quisque tincidunt. Nam bibendum ornare nibh. Curabitur suscipit mauris in mi. Fusce leo mi, bibendum sit amet, vulputate vel, sollicitudin in, ipsum. Nam dui. Nunc a ipsum quis leo porta interdum. Donec quis mauris vel quam tristique vulputate. Nunc sed tellus nec tortor mattis tempor. Nulla ultrices, orci at ullamcorper facilisis, turpis est dignissim mauris, a ullamcorper enim urna nec libero. Praesent id tellus et ipsum aliquam interdum.
+
+  Sed tincidunt malesuada lacus. Nullam aliquam lobortis enim. Curabitur augue. Nulla mollis gravida magna. Integer quis sem. Suspendisse luctus dictum erat. Cras nec arcu. Phasellus imperdiet. Vestibulum dapibus dignissim tellus. Suspendisse non lacus non orci cursus ullamcorper."
+  created_at: <%= 5.days.ago.to_s :db %>
+  updated_at: <%= 2.days.ago.to_s :db %>
+
+two:
+  user_id: 2
+  prank_id: 3
+  image_id: 
+  body: Hi
+  created_at: <%= 6.days.ago.to_s :db %>
+  updated_at: <%= 2.days.ago.to_s :db %>

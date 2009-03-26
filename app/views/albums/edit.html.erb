@@ -1,0 +1,30 @@
+<% title "#{@prank.title} | Edit #{@album.title}" %>
+<div id="title">
+  <h2><%= @prank.title %><span class="grey">Edit <%= @album.title %></span></h2>
+  <p class="small-link"><%= link_to 'Back to prank', @prank %> | <%= link_to 'Back to all photos', photos_path(@prank) %> | <%= link_to 'Back to album', prank_album_images_path(@prank, @album) %></p>
+</div>
+<p class="edit-link"><%= link_to '[x] Delete Album', prank_album_path, :confirm => 'Are you sure you want to delete the album?', :method => :delete if album_owner_or_admin?(@album) %></p>
+
+<% form_for @album, :url => prank_album_path(@prank) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="optional">
+    <%= f.label :title, 'Album Title:' %><%= f.text_field :title, :class => 'inputText' %>
+  </div>
+  <%- for image in @album.images -%>
+	<%- fields_for "album[image_attributes][]", image do |f| -%>
+  <div class="image-row">
+	<div class="album-image"><%= image_tag image.public_filename(:thumb) %></div>
+	<div class="album-captions">
+	<%= f.label :caption, 'Caption:', :index => nil %><br />
+	<%= f.text_area :caption, :rows => 5, :cols => 30, :index => nil %><br />
+	<%= f.radio_button :primary, true, :index => nil %><%= f.label :primary, 'Album Cover', :index => nil %>
+	<%= f.hidden_field :id, :index => nil %>
+	</div>
+  </div>
+<%- end -%>		 	
+  <%- end -%>
+  <div class="submit">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

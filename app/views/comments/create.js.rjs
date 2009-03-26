@@ -1,0 +1,5 @@
+page[:new_comment_form].visual_effect :blind_up
+page.insert_html :top, 'comments-entries', :partial => "#{@resource}/new_comment", :object => @comment
+page.show "new_comment_link"
+page.replace_html 'comment-count', pluralize(@count, 'Comment') unless @count.blank?
+page.visual_effect :highlight, "comment_#{@comment.id}", :duration => 3

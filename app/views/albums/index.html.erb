@@ -1,0 +1,23 @@
+<% title "#{@prank.title} | Photo Albums" %>
+<div id="title">
+  <%- if logged_in? and !owner_or_admin?(@prank) -%>
+	  <p class="fltrt">Do you have images of this prank in action? <%= link_to 'Add Single Image', new_prank_image_path %> or <%= link_to 'Add Photo Album', new_prank_album_path %></p>
+  <%- end -%>
+  <div id="title-main">
+    <h2><%= @prank.title %> <span class="grey">Photo Albums</span></h2>
+    <p class="small-link"><%= link_to 'Back to prank', @prank %></p>
+  </div>
+</div>
+<ul id="tools">
+	<li><%= pluralize(@album_count, "Album") %></li>
+	<%- if album_owner_or_admin?(@prank) -%>
+	<li><%= link_to 'Add new Profile Photo', new_prank_album_image_path(@prank, @prank.profile_album) %></li>
+	<li><%= link_to 'Create New Photo Album', new_prank_album_path %></li>
+	<%- end -%>
+</ul>
+<%- for album in @albums -%>
+	<div class="album">
+		<%= link_to image_tag(album.profile_image(:thumb)), prank_album_images_path(@prank, album) %>
+		<div class="info"><%= link_to album.title, prank_album_images_path(@prank, album) %></div>
+	</div>
+<%- end -%>

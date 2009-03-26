@@ -1,0 +1,21 @@
+<% title "PrankLabs | #{@user.login}"  %>
+<div id="title">
+  <h2><%=h @user.login %></h2>
+  <%- if current_user_or_admin?(@user) -%>
+	  <p><%= link_to 'Edit Profile', edit_user_path, :class => 'small-link' %></p>
+  <%- end -%>
+</div>
+<div id="leftbar">
+  <%= link_to image_tag(@user.profile_image(:medium), :class => 'profile-pic'), user_image_path(@user) %>
+</div>
+
+<div id="mainContent">
+  <h3>Pranks (<%= @user.prank_count %>):<span id="new_comment_link"><%= link_to 'Create A New Prank', new_prank_path unless !current_user?(@user)%></span></h3>
+  <ul id="user-pranks">
+	<%= render(:partial => "user_prank", :collection => @user.pranks) %>
+  </ul>
+  <h3>Images Added To Other User's Pranks (<%= @images.size %>)</h3>
+  <div id="user-images">
+	<%= render(:partial => "user_image", :collection => @images) %>
+  </div>
+</div>

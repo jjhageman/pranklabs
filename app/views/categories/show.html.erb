@@ -1,0 +1,7 @@
+<% title "#{@category.name} Pranks"  %>
+<div id="title">
+	<h2><%= @category.name %> Pranks</h2>
+</div>
+<%= render :partial => 'pranks/pranks_table' %>
+<%= will_paginate @pranks %>
+<span id="category-list">Other Categories: <%= @remaining_categories.collect{|c| link_to(c.name, category_path(c)) }.join(' | ') %></span>

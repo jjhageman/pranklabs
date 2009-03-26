@@ -1,0 +1,24 @@
+<div id="title">
+  <h2>Member Login</h2>
+  <p class="small-link">Not a member yet? <%= link_to 'Sign Up', signup_path %></p>
+</div>
+<div id="member-login">
+<% form_tag sessions_path do -%>
+  <div class="required">
+	<%= label_tag 'login', 'Login:' %> <%= text_field_tag 'login', nil, :class => 'inputText' %>
+  </div>
+  <div class="required">
+    <%= label_tag 'password', 'Password:' %> <%= password_field_tag 'password', nil, :class => 'inputText' %>
+  </div>
+  <div class="optional">
+    <%= label_tag 'remember_me', 'Remember me:' %> <%= check_box_tag 'remember_me', '1', false ,:class => 'inputCheckbox' %>
+  </div>
+  <div class="submit">
+	<%= submit_tag 'Log in' %>
+  </div>
+  <div class="optional">
+	<label />
+	<p><%= link_to 'Forgot your password?', forgot_password_path, :class => 'small-link' %></p>
+  </div>
+<% end -%>
+</div>
