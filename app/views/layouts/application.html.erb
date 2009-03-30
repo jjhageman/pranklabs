@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><%= yield(:title) || "PrankLabs - The Sweet Science of the Prank" %></title>
-<%= stylesheet_link_tag 'reset', 'screen', 'rating' %>
+<%= stylesheet_link_tag 'reset', 'pranks', 'rating' %>
 <%= javascript_include_tag :defaults %>
 <%= yield :head %>
 <!--[if IE 5]>
@@ -22,77 +22,44 @@
 <![endif]-->
 </head>
 <body>
-<div id="container">
-  <div id="header">
-	<div id="head-left">
-	  <%= link_to_unless_current image_tag("pranklabs.png", :id => "logo", :alt => "Prank Ideas"), pranks_path %>
-	  <h1><%= link_to_unless_current "Prank Labs", pranks_path %><span class="beta">BETA</span></h1>
-	</div>
-	<div id="head-right">
-	  <span id="loggin">
-	  <%- if logged_in? -%>
-		Welcome, <%= h current_user.login %>! &#8226; <%= link_to_unless_current "My Account", user_path(current_user) %> &#8226; <%= link_to "Logout", logout_path %>
-	  <%- else -%>
-		<%= link_to_unless_current "Login", login_path %> &#8226; Not a member? <%= link_to_unless_current "Sign Up", signup_path %>
-	  <%- end -%>
-	  </span>
-		<div id="search">
-			<%- form_tag :controller => :pranks, :action => :search, :method => :get do -%>
-				<%= text_field_tag :search, params[:search] %>
-				<%= submit_tag "Go", :name => nil %>
-			<%- end -%>
-		</div>
-	</div>
-	<ul id="nav">
-		<%- Category.find(:all).each do |c| -%>
-		<li><%= link_to c.name, category_path(c) %></li>
-		<%- end -%>
-	</ul>
-  </div><!-- end #header -->
-  <div id="content">
-	<%- flash.each do |key, msg| -%>
-      <%= content_tag :p, msg, :class => "flash #{key}" %>
-    <%- end -%>
-  	<%= yield  %>
-  	<br class="clearfloat" />
-  </div><!-- end #content -->
-  <div id="footer">
-    <p>&copy; 2008 PrankLabs. All rights reserved.</p>
-	<p>All of the information and commentary contained herein is being provided for entertainment purposes only. The opinions and information expressed are those of the individual posting the content. Neither PrankLabs, nor any other associated person or entity makes any representation or warranty, whether express or implied, regarding the information or commentary and cannot accept any legal responsibility for the content.</p>
-  </div><!-- end #footer -->
-</div><!-- end #container -->
-<% if ENV["RAILS_ENV"] == "development" %>
-	<div id="debug"> 
-		<a href="#" onclick="Element.toggle('params_debug_info');return false">params</a> | 
-		<a href="#" onclick="Element.toggle('session_debug_info');return false">session</a> |
-		<a href="#" onclick="Element.toggle('env_debug_info');return false">env</a> | 
-		<a href="#" onclick="Element.toggle('request_debug_info');return false">request</a>
-		<fieldset id="params_debug_info" class="debug_info" style="display:none"> 
-			<legend>params</legend> 
-			<%= debug(params) %> 
-		</fieldset> 
-		<fieldset id="session_debug_info" class="debug_info" style="display:none"> 
-			<legend>session</legend> 
-			<%= debug(session) %> 
-		</fieldset>
-		<fieldset id="env_debug_info" class="debug_info" style="display: none"> 
-			<legend>env</legend> 
-			<%= debug(request.env) %> 
-		</fieldset> 
-		<fieldset id="request_debug_info" class="debug_info" style="display: none"> 
-			<legend>request</legend> 
-			<%= debug(request) %> 
-		</fieldset>
-	</div>
-<% end %>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-7856829-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+	<div id="container">
+		<div id="header">
+			<div id="head-left">
+				<%= link_to_unless_current image_tag("pranklabs.gif", :alt => "Prank Ideas"), pranks_path %> Showcase your pranks.
+			</div><!-- end #head-left -->
+			<div id="head-right">
+			  <span id="loggin">
+			  <%- if logged_in? -%>
+				Welcome, <%= h current_user.login %>! &#8226; <%= link_to_unless_current "My Account", user_path(current_user) %> &#8226; <%= link_to "Logout", logout_path %>
+			  <%- else -%>
+				<%= link_to_unless_current "Login", login_path %> &#8226; Not a member? <%= link_to_unless_current "Sign Up", signup_path %>
+			  <%- end -%>
+			  </span>
+				<div id="search-form">
+					<%- form_tag :controller => :pranks, :action => :search, :method => :get do -%>
+						<%= text_field_tag :search, params[:search].blank? ? 'Search Pranks' : params[:search] %>
+						<%= submit_tag "Go", :name => nil, :class => 'button' %>
+					<%- end -%>
+				</div><!-- end #search -->
+			</div><!-- end #head-right -->
+			<ul id="nav">
+				<%- Category.find(:all).each do |c| -%>
+				<li><%= link_to c.name.upcase, category_path(c) %></li>
+				<%- end -%>
+			</ul>
+			<br class="clearfloat" />
+		</div><!-- end #header -->
+		<div id="content">
+			<%- flash.each do |key, msg| -%>
+		      <%= content_tag :p, msg, :class => "flash #{key}" %>
+		    <%- end -%>
+		  	<%= yield  %>
+		<br class="clearfloat" />
+		</div><!-- end #content -->
+	</div><!-- end #container -->
+	<div id="footer">
+    	<p>&copy; 2008 PrankLabs. All rights reserved.</p>
+		<p>All of the information and commentary contained herein is being provided for entertainment purposes only. The opinions and information expressed are those of the individual posting the content. Neither PrankLabs, nor any other associated person or entity makes any representation or warranty, whether express or implied, regarding the information or commentary and cannot accept any legal responsibility for the content.</p>
+  	</div><!-- end #footer -->
 </body>
 </html>

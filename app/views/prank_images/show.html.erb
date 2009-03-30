@@ -8,7 +8,7 @@
 	<li><%= link_to '[x] Delete Image', prank_image_path, :confirm => 'Are you sure you want to delete the image?', :method => :delete %></li>
 </ul>
 <%- end -%>
-<%= image_tag @image.public_filename, :class => 'full-pic' %>
+<%= image_tag @image.public_filename(:big), :class => 'full-pic' %>
 <div id="caption">
 <%- if @image.caption.blank? -%>
 	<p><%= link_to 'Add Caption?', edit_prank_image_path, :class => 'small-link' if owner_or_admin?(@prank) %></p>

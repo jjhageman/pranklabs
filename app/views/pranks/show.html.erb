@@ -30,7 +30,7 @@
 	<h3>Target:</h3>
 	<p><%=h @prank.targets %></p>
 	<h3>How-To:</h3>
-	<p><%= simple_format sanitize(@prank.instructions) %></p>
+	<%= simple_format sanitize(@prank.instructions) %>
 </div>
 <%= render :partial => 'tag_cloud' unless @tags.blank? %>
 <%- unless !logged_in? and @comments.empty? -%>

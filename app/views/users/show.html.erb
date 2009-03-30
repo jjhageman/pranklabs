@@ -6,7 +6,7 @@
   <%- end -%>
 </div>
 <div id="leftbar">
-  <%= link_to image_tag(@user.profile_image(:medium), :class => 'profile-pic'), user_image_path(@user) %>
+  <%= link_to image_tag(@user.profile_image(:thumb), :class => 'profile-pic'), user_image_path(@user) %>
 </div>
 
 <div id="mainContent">

@@ -14,7 +14,7 @@
 		<li><%= link_to 'Create New Photo Album', new_prank_album_path %></li>
 		<li><%= link_to 'Edit Photo Album', edit_prank_album_path(@prank, @album) %></li>
 		<%- end -%>
-		<li>by <%= link_to image_tag(@album.user.profile_image(:tiny), :class => 'micro-pic'), @album.user %> <%= link_to @album.user.login, @album.user %></li>
+		<li>by <%= link_to image_tag(@album.user.profile_image(:tiny_square), :class => 'micro-pic'), @album.user %> <%= link_to @album.user.login, @album.user %></li>
 	</ul>
 	<%- for image in @images -%>
 		<%= link_to image_tag(image.public_filename(:thumb), :class => 'album-pic'), prank_album_image_path(@prank, @album, image) %>
