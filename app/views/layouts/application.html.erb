@@ -23,6 +23,8 @@
 </head>
 <body>
 	<div id="container">
+		<div id="wrapper">
+		<div id="wrapper-b">	
 		<div id="header">
 			<div id="head-left">
 				<%= link_to_unless_current image_tag("pranklabs.gif", :alt => "Prank Ideas"), pranks_path %> Showcase your pranks.
@@ -56,6 +58,7 @@
 		  	<%= yield  %>
 		<br class="clearfloat" />
 		</div><!-- end #content -->
+		</div></div><!-- end #wrapper -->
 	</div><!-- end #container -->
 	<div id="footer">
     	<p>&copy; 2008 PrankLabs. All rights reserved.</p>

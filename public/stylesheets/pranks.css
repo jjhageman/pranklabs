@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body  {
 	font: 90% Helvetica, Arial, Verdana, sans-serif;
-	background: #CFCFCF;
+	background-color: #CFCFCF;
 	margin: 0;
 	padding: 0;
 	text-align: center;
@@ -38,10 +38,16 @@ a:active {
 }
 p {	padding: 0 0 12px; }
 #container { 
-	width: 658px;
-	background: #e97117 url(../images/bg.jpg) no-repeat top left;
+	width: 730px;
+	background: #e97117 url(../images/bg.png);
 	margin: 0 auto;
 	text-align: left;
+}
+#wrapper {
+	background: transparent url(../images/texture.gif) no-repeat center top;
+}
+#wrapper-b {
+	background: transparent url(../images/texture_bottom.gif) no-repeat center bottom;
 	padding: 0 36px 36px;
 }
 #header {
@@ -170,6 +176,7 @@ p {	padding: 0 0 12px; }
 }
 .popular-pranks li {
 	float: left;
+	text-align: center;
 	padding: 10px;
 }
 /** From old css **/

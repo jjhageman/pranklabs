@@ -12,17 +12,15 @@ set :domain, "pranklabs.com"
 set :mongrel_port, "4164"
 set :server_hostname, "pranklabs.com"
 
-set :git_account, "jjhageman"
-set :scm_passphrase, Proc.new { Capistrano::CLI.password_prompt('Git Password: ') }
-
 role :app, server_hostname
 role :web, server_hostname
 role :db,  server_hostname, :primary => true
 
 default_run_options[:pty] = true
 set :repository,  "git@github.com:jjhageman/pranklabs.git"
-set :scm, :git
-set :user, user
+set :scm, "git"
+set :git_account, "jjhageman"
+set :scm_passphrase, Proc.new { Capistrano::CLI.password_prompt('Git Password: ') }
 
 ssh_options[:forward_agent] = true
 set :branch, "master"

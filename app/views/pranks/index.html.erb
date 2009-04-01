@@ -1,6 +1,6 @@
 <div id="feature-prank">
 	<h1><%= link_to h(@featured_prank.title), @featured_prank %></h1>
-	<p><%= link_to image_tag(@featured_prank.profile_image(:big), :class => 'profile-pic'), @featured_prank %></p>
+	<p><%= link_to image_tag("feature/balloon-filled-cube.jpg", :class => 'profile-pic'), @featured_prank %></p>
 	<div class="right-col">
 		<h3>Summary:</h3>
 		<p><%= trunc_prank_text(@featured_prank, @featured_prank.summary) %></p>
