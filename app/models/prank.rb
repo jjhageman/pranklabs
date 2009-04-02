@@ -10,6 +10,17 @@ class Prank < ActiveRecord::Base
   validates_uniqueness_of :title
   serialize :tools
   
+  define_index do
+    indexes title
+    indexes summary
+    indexes tools
+    indexes targets
+    indexes instructions
+    indexes categories.name, :as => :category_name
+    indexes tags.name, :as => :tag_name
+    indexes user.login, :as => :user_login
+  end
+  
    def profile_image(type=nil)
      image = primary_image || last_uploaded_image || nil
      case type
@@ -64,13 +75,5 @@ class Prank < ActiveRecord::Base
   
   def last_image
     !images.blank? ? images.last : nil
-  end
-  
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['tags LIKE ?', "%#{search}%"])
-    else
-      find(:all)
-    end
   end
 end

@@ -68,12 +68,12 @@ ActiveRecord::Schema.define(:version => 20090304003003) do
     t.text     "instructions"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "photos_count"
+    t.integer  "photos_count",                                                 :default => 0
     t.integer  "user_id"
-    t.integer  "comments_count",  :default => 0, :null => false
+    t.integer  "comments_count",                                               :default => 0, :null => false
     t.integer  "rating_count"
-    t.decimal  "rating_total"
-    t.decimal  "rating_avg"
+    t.integer  "rating_total",    :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "rating_avg",                    :precision => 10, :scale => 2
     t.string   "cached_tag_list"
   end
 
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(:version => 20090304003003) do
     t.integer "rated_id"
     t.string  "rated_type"
     t.integer "rating_count"
-    t.decimal "rating_total"
-    t.decimal "rating_avg",   :precision => 10, :scale => 2
+    t.integer "rating_total", :limit => 10, :precision => 10, :scale => 0
+    t.decimal "rating_avg",                 :precision => 10, :scale => 2
   end
 
   add_index "rating_statistics", ["rated_type", "rated_id"], :name => "index_rating_statistics_on_rated_type_and_rated_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20090304003003) do
     t.integer "rater_id"
     t.integer "rated_id"
     t.string  "rated_type"
-    t.decimal "rating"
+    t.integer "rating",     :limit => 10, :precision => 10, :scale => 0
   end
 
   add_index "ratings", ["rated_type", "rated_id"], :name => "index_ratings_on_rated_type_and_rated_id"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20090304003003) do
     t.integer "rater_id"
     t.integer "rated_id"
     t.string  "rated_type"
-    t.decimal "rating"
+    t.integer "rating",     :limit => 10, :precision => 10, :scale => 0
   end
 
   add_index "stats_ratings", ["rated_type", "rated_id"], :name => "index_stats_ratings_on_rated_type_and_rated_id"
@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(:version => 20090304003003) do
     t.datetime "remember_token_expires_at"
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
-    t.boolean  "admin"
-    t.boolean  "enabled"
+    t.boolean  "admin",                                   :default => false,     :null => false
+    t.boolean  "enabled",                                 :default => true,      :null => false
     t.datetime "last_login_at"
     t.string   "state",                                   :default => "passive"
     t.datetime "deleted_at"

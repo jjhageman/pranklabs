@@ -89,7 +89,7 @@ class PranksController < ApplicationController
   end
   
   def search
-    @pranks = Prank.search(params[:search])
+    @pranks = Prank.search params[:search], :page => 1, :per_page => 10
   end
   
   def rate_prank

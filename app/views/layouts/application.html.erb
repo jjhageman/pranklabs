@@ -39,7 +39,7 @@
 			  </span>
 				<div id="search-form">
 					<%- form_tag :controller => :pranks, :action => :search, :method => :get do -%>
-						<%= text_field_tag :search, params[:search].blank? ? 'Search Pranks' : params[:search] %>
+						<%= text_field_tag :search, params[:search].blank? ? 'Search Pranks' : params[:search], :onblur => "this.value=(this.value=='') ? 'Search Pranks' : this.value;", :onfocus => "this.value=(this.value=='Search Pranks') ? '' : this.value;" %>
 						<%= submit_tag "Go", :name => nil, :class => 'button' %>
 					<%- end -%>
 				</div><!-- end #search -->
