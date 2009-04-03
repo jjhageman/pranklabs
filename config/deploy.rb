@@ -29,4 +29,4 @@ set :git_shallow_clone, 1
 set :git_enable_submodules, 1
 set :use_sudo, false
 set :deploy_to, "/home/prankla/pranklabs"
-set :chmod755, %w(app config db lib public vendor script tmp public/dispatch.cgi public/dispatch.fcgi public/dispatch.rb)
+set :chmod755, "app config db lib public vendor script script/* public/disp*"
