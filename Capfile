@@ -4,7 +4,7 @@ after 'deploy:symlink', 'deploy:finishing_touches'
 namespace :deploy do
  task :finishing_touches, :roles => :app do
  run "mv -f #{current_path}/config/environment.rb.online #{current_path}/config/environment.rb"
- run "ln -s /home/prankla/pranklabs/db/sphinx db/sphinx #{current_path}/db/sphinx" 
+ run "ln -s /home/prankla/pranklabs/db/sphinx #{current_path}/db/sphinx" 
  end
 
  task :start, :roles => :app do
