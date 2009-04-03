@@ -12,7 +12,7 @@ namespace :deploy do
 
  task :restart, :roles => :app do
  run "cd #{current_path} && mongrel_rails stop"
- run "mongrel_rails start -e production -p 4164 -d"
+ run "cd #{current_path} && mongrel_rails start -e production -p #{mongrel_port} -d"
  run "pkill -9 searchd -u prankla"
  run " cd #{current_path} && searchd --pidfile --config /home/prankla/pranklabs/current/config/production.sphinx.conf "
  run "cd #{current_path} && chmod 755 #{chmod755}"
