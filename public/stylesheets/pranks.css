@@ -38,7 +38,7 @@ a:active {
 }
 p {	padding: 0 0 12px; }
 #container { 
-	width: 730px;
+	width: 1042px;
 	background: #e97117 url(../images/bg.png);
 	margin: 0 auto;
 	text-align: left;
@@ -48,7 +48,7 @@ p {	padding: 0 0 12px; }
 }
 #wrapper-b {
 	background: transparent url(../images/texture_bottom.gif) no-repeat center bottom;
-	padding: 0 36px 36px;
+	padding: 0 36px 70px;
 }
 #header {
 	color: #000;
@@ -109,7 +109,7 @@ p {	padding: 0 0 12px; }
 }
 #nav {
 	clear: both;
-	font-size: 0.6em;
+	font-size: 0.9em;
 	border-top: solid 1px #C8C8C8;
 	border-bottom: solid 1px #C8C8C8;
 	padding: 10px 0;
@@ -118,7 +118,7 @@ p {	padding: 0 0 12px; }
 }
 #nav li {
 	display: inline;
-	padding: 0 10px;
+	padding: 0 20px;
 	color: #900010;
 }
 #nav a:link,
@@ -138,6 +138,7 @@ p {	padding: 0 0 12px; }
 #feature-prank {
 	position: relative;
 	color: #FFF;
+	overflow: hidden;
 }
 #feature-prank h1 {
 	position: absolute;
@@ -155,15 +156,21 @@ p {	padding: 0 0 12px; }
 	color: #FFF;
 	text-decoration: none;
 }
+#feature-prank .left-col {
+	float: left;
+	width: 565px;
+}
 #feature-prank .right-col {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	width: 165px;
-	height: 344px;
-	background-color: #767676;
+	float: right;
+	background: #808080 url(../images/col_bg.gif) no-repeat center 5%;
+	width: 315px;
 	padding: 15px;
+	margin-bottom: -1000px; 
+	padding-bottom: 1000px;
 	font-size: 0.9em;
+}
+#feature-prank .right-col a {
+	color: #000;
 }
 #feature-prank .right-col h3 {
 	color: #FFF;
@@ -612,7 +619,7 @@ form.tool {
 /** From old css **/
 #footer { 
 	padding: 0 5px;
-	width: 730px;
+	width: 970xpx;
 	margin: 20px auto 0;
 	text-align: left;
 } 

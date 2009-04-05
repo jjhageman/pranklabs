@@ -1,6 +1,8 @@
 <div id="feature-prank">
-	<h1><%= link_to h(@featured_prank.title), @featured_prank %></h1>
-	<p><%= link_to image_tag("feature/balloon-filled-cube.jpg", :class => 'profile-pic'), @featured_prank %></p>
+	<div class="left-col">
+		<h1><%= link_to h(@featured_prank.title), @featured_prank %></h1>
+		<%= link_to image_tag(@featured_prank.profile_image(:big), :class => 'profile-pic'), @featured_prank %>
+	</div>
 	<div class="right-col">
 		<h3>Summary:</h3>
 		<p><%= trunc_prank_text(@featured_prank, @featured_prank.summary) %></p>
@@ -15,6 +17,7 @@
 			<%- end -%>
 		</p>
 	</div><!-- end #right-col -->
+	<br class="clearfloat" />
 </div><!-- end #feature-prank -->
 <div class="popular-pranks">
 	<ul><%= render(:partial => "popular_prank", :collection => @popular_pranks) %></ul>
