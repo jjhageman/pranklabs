@@ -16,7 +16,7 @@ h2 {
 }
 h3 {
 	font-weight: bold;
-	letter-spacing: -1px;
+	letter-spacing: -0.5px;
 	color: #333;
 }
 h4 {
@@ -141,20 +141,33 @@ p {	padding: 0 0 12px; }
 	overflow: hidden;
 }
 #feature-prank h1 {
+	background-color: #FFF;
 	position: absolute;
-	top: 10px;
-	left: 10px;
-	font-family: “Trebuchet MS”, sans-serif;
-	font-size: 1.8em;
-	font-style: normal;
-	font-weight: bold;
-	text-transform: normal;
-	letter-spacing: -1px;
-	line-height: 1.1em;
+	top: 40px;
+	left: 0;
+	display: block;
+	padding: 10px 18px 10px 2px;
 }
-#feature-prank h1 a {
-	color: #FFF;
+#feature-prank h1 a:link,
+#feature-prank h1 a:visited {
+	font-family: Helvetica, sans-serif;
+	font-size: 32px;
+	font-weight: bold;
+	letter-spacing: -0.5px;
+	color: #000;
 	text-decoration: none;
+}
+#feature-prank h1 a:hover,
+#feature-prank h1 a:active {
+	color: #B35A00;
+}
+#feature-prank h1 .author {
+	color: #807F7F;
+	font-size: 10px;
+}
+#feature-prank h1 .author a {
+	color: #B35A00;
+	font-size: 10px;
 }
 #feature-prank .left-col {
 	float: left;
@@ -175,6 +188,7 @@ p {	padding: 0 0 12px; }
 #feature-prank .right-col h3 {
 	color: #FFF;
 	margin-bottom: 3px;
+	font-size: 1.6em;
 }
 .popular-pranks {
 	border-top: solid 1px #C8C8C8;

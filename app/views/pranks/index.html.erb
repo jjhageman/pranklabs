@@ -1,16 +1,19 @@
 <div id="feature-prank">
 	<div class="left-col">
-		<h1><%= link_to h(@featured_prank.title), @featured_prank %></h1>
+		<h1>
+			<%= link_to h(@featured_prank.title), @featured_prank %><br />
+			<span class="author">Mischief by: <%= link_to @featured_prank.user.login, @featured_prank.user %></span>
+		</h1>
 		<%= link_to image_tag(@featured_prank.profile_image(:big), :class => 'profile-pic'), @featured_prank %>
 	</div>
 	<div class="right-col">
-		<h3>Summary:</h3>
+		<h3>The Prank:</h3>
 		<p><%= trunc_prank_text(@featured_prank, @featured_prank.summary) %></p>
-		<h3>Target:</h3>
+		<h3>The Target:</h3>
 		<p><%= trunc_prank_text(@featured_prank, @featured_prank.targets) %></p>
-		<h3>How-To:</h3>
+		<h3>The Method:</h3>
 		<%= trunc_prank_instructions(@featured_prank, @featured_prank.instructions) %>
-		<h3>Similar:</h3>
+		<h3>The Tags:</h3>
 		<p>
 			<%- tag_cloud @featured_tags, %w(css1 css2 css3 css4) do |tag, css_class| -%>
 				<%= link_to tag.name, tag_path(tag.name), :class => css_class %>
