@@ -7,7 +7,7 @@ class PranksController < ApplicationController
   def index
     @featured_prank = Prank.find(7)
     @featured_tags = @featured_prank.tag_counts
-    @popular_pranks = Prank.find(:all, :order => 'rating_count DESC', :limit => 8)
+    @popular_pranks = Prank.find(:all, :order => 'rating_count DESC', :limit => 7)
     tag_cloud
     respond_to do |format|
       format.html # index.html.erb
