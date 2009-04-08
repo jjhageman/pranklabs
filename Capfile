@@ -15,6 +15,7 @@ namespace :deploy do
   run "cd #{current_path} && mongrel_rails stop"
   run "cd #{current_path} && mongrel_rails start -e production -p #{mongrel_port} -d"
   run "pkill -9 searchd -u prankla"
+  run "cd #{current_path} && rake thinking_sphinx:index"
   run "cd #{current_path} && rake thinking_sphinx:start"
   run "cd #{current_path} && chmod 755 #{chmod755}"
   cleanup

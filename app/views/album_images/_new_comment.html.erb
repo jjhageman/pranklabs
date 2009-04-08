@@ -1,6 +1,6 @@
 <div id="comment_<%= @comment.id %>" class="comment">
 	<div class="comment-pic">
-		<%= link_to image_tag(@comment.user.profile_image(:tiny), :class => 'tiny-pic'), user_path(@comment.user) %></div>
+		<%= link_to image_tag(@comment.user.profile_image(:tiny_square), :class => 'tiny-pic'), user_path(@comment.user) %></div>
 	<div class="comment-body">
 		<div class="comment-entry"><span class="date"><%= @comment.created_at.to_s(:comment) %></span><%= link_to @comment.user.login, user_path(@comment.user) %> says:</div>
 		<p><%= sanitize @comment.body %></p>
