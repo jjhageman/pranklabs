@@ -37,6 +37,10 @@ module ApplicationHelper
     logged_in? and comment.user == current_user
   end
   
+  def video_owner?(video)
+    logged_in? and video.user == current_user
+  end
+  
   def current_user_or_admin?(user)
     admin? or current_user?(user)
   end
@@ -55,5 +59,9 @@ module ApplicationHelper
   
   def comment_owner_or_admin?(comment)
     admin? or comment_owner?(comment)
+  end
+  
+  def video_owner_or_admin?(video)
+    admin? or video_owner?(video)
   end
 end

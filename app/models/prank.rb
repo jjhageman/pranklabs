@@ -2,6 +2,7 @@ class Prank < ActiveRecord::Base
   belongs_to :user, :counter_cache => true
   has_many :albums
   has_many :images
+  has_many :videos
   has_many :comments, :order => "created_at", :dependent => :destroy
   has_and_belongs_to_many :categories
   acts_as_rated

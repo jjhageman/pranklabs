@@ -55,7 +55,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     @count = parent.comments.count
     render :update do |page|
-      page.replace_html 'comment-count', :partial => 'comment_count', :locals => { :count => @count }
+      page.replace_html 'comment-count', pluralize(@count, 'Comment') unless @count.blank?
       page.visual_effect :blind_up, "comment_#{@comment.id}"
       #page.remove "comment_#{@comment.id}"
     end
@@ -70,6 +70,8 @@ class CommentsController < ApplicationController
       @image = @album.images.find(params[:image_id])
     elsif image?
       @image = @prank.images.find(params[:image_id])
+    elsif video?
+      @video = @prank.videos.find(params[:video_id])
     end
   end
   
@@ -103,7 +105,9 @@ class CommentsController < ApplicationController
   end
   
   def parent
-    if image?
+    if video?
+      @video
+    elsif image?
       @image
     elsif prank?
       @prank
@@ -121,7 +125,9 @@ class CommentsController < ApplicationController
   
   # Return a string of the view folder.
   def resource
-    if album?
+    if video?
+      "videos"
+    elsif album?
       "album_images"
     elsif image?
       "prank_images"
@@ -143,5 +149,9 @@ class CommentsController < ApplicationController
   # True if resource only an image directly within a prank.
   def image?
     !params[:image_id].nil?
+  end
+  
+  def video?
+    !params[:video_id].nil?
   end
 end

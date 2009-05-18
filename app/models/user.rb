@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :albums
   has_many :ratings
   has_many :comments
+  has_many :videos
   has_one :image
   # Virtual attribute for the unencrypted password
   attr_accessor :password

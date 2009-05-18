@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090304003003) do
+ActiveRecord::Schema.define(:version => 20090421044412) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20090304003003) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "video_id"
   end
 
   create_table "images", :force => true do |t|
@@ -141,6 +142,17 @@ ActiveRecord::Schema.define(:version => 20090304003003) do
     t.integer  "pranks_count",                            :default => 0,         :null => false
     t.integer  "comments_count",                          :default => 0,         :null => false
     t.integer  "albums_count",                            :default => 0,         :null => false
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "title"
+    t.string   "video_url"
+    t.integer  "prank_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comments_count"
+    t.string   "type"
   end
 
 end

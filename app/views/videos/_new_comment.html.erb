@@ -1,0 +1,10 @@
+<div id="comment_<%= @comment.id %>" class="comment">
+	<div class="comment-pic">
+		<%= link_to image_tag(@comment.user.profile_image(:tiny_square), :class => 'tiny-pic'), user_path(@comment.user) %></div>
+	<div class="comment-body">
+		<div class="comment-entry"><span class="date"><%= @comment.created_at.to_s(:comment) %></span><%= link_to @comment.user.login, user_path(@comment.user) %> says:</div>
+		<p><%= sanitize @comment.body %></p>
+	</div>
+	<p class="edit-link fltrt"><%= link_to_remote( '[x] Delete Comment', :url => prank_video_comment_path(@prank, @video, @comment), :method => :delete, :confirm => 'Are you sure you want to delete your comment?') if comment_owner_or_admin?(@comment) %></p>
+	<br class="clearfloat" />
+</div>

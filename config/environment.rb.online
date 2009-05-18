@@ -64,4 +64,10 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
+  config.active_record.observers = :user_observer
 end
+
+require "will_paginate"
+
+# Time::DATE_FORMATS[:comment] = "%b %d, %Y. %I:%M %p"
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:comment => "%b %d, %Y. %I:%M %p")

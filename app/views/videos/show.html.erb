@@ -1,0 +1,25 @@
+<div id="title">
+  <h2><%= @prank.title %><span class="grey"> Video</span></h2>
+  <p class="small-link"><%= link_to 'Back to prank', @prank %></p>
+</div>
+<%- if video_owner_or_admin?(@video) -%>
+<ul id="tools">
+	<li><%= link_to 'Edit Video', edit_prank_video_path %></li>
+	<li><%= link_to '[x] Remove Video', prank_video_path, :confirm => 'Are you sure you want to remove the video?', :method => :delete %></li>
+</ul>
+<%- end -%>
+<%= @video.display_video %>
+<%- unless !logged_in? and @video.comments.empty? -%>
+<div id="image-comments">
+	<div id="comments-top">
+		<h3><span id="comment-count"><%= pluralize @video.comments.size, 'Comment' unless @video.comments.empty? %></span>
+		<%- if logged_in? -%>
+			<span id="new_comment_link"><%= link_to_remote "Add Comment", :url => new_prank_video_comment_path(@prank, @video), :method => :get %></span>
+		<%- end -%></h3>
+		<div id="new_comment_form"></div>
+	</div>
+	<div id="comments-entries">
+		<%= render(:partial => "comment", :collection => @video.comments) unless @video.comments.empty? %>
+	</div>
+</div>
+<%- end -%>

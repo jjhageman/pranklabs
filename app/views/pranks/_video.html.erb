@@ -1,0 +1,10 @@
+<%- unless !video.available? -%>
+<div class="vid">
+	<p><%= link_to image_tag(video.thumbnail_url, :class => 'tiny-pic'), prank_video_path(@prank, video) %></p>
+	<h4><%= link_to video.clip_title, prank_video_path(video.prank, video) %></h4>
+	<div class="info">
+		<div class="author">Added by: <%= link_to video.user.login, video.user %></div>
+	</div>
+	<br class="clearfloat" />
+</div>
+<%- end -%>

@@ -1,11 +1,17 @@
 @charset "UTF-8";
 body  {
 	font: 90% Helvetica, Arial, Verdana, sans-serif;
+	/*font: 90% "Lucida Grande",Tahoma,Arial,Sans-Serif;*/
+	/*font: 90% Georgia,"Nimbus Roman No9 L",serif;*/
+	/*font: 90% Verdana,'Lucida Grande',Arial,"Trebuchet MS",Helvetica,sans-serif;*/
 	background-color: #CFCFCF;
 	margin: 0;
 	padding: 0;
 	text-align: center;
 	color: #000000;
+}
+em {
+	font-style: italic;
 }
 h2 {
 	font-size: 1.2em;
@@ -13,6 +19,9 @@ h2 {
 	padding: 0 0 10px;
 	letter-spacing: -1px;
 	color: #333;
+}
+h2 .grey {
+	color: #999;
 }
 h3 {
 	font-weight: bold;
@@ -29,7 +38,7 @@ strong {
 }
 a:link,
 a:visited {
-	color: #B35A00;
+	color: #FF5500;
 	text-decoration: underline;
 }
 a:hover,
@@ -60,16 +69,16 @@ p {	padding: 0 0 12px; }
 	width: 65%;
 	margin: 10px 0;
 	font-family: “Trebuchet MS”, sans-serif;
-	font-size: 18px;
+	font-size: 17px;
 	font-style: normal;
-	font-weight: normal;
+	font-weight: bold;
 	text-transform: normal;
 	letter-spacing: normal;
 	line-height: 1.4em;
-	color: #B35A00;
+	color: #FF5500;
 }
 #head-left img {
-	margin: 0 5px -3px 0;
+	margin: 0 5px -25px 0;
 }
 #head-right {
 	float: right;
@@ -80,10 +89,6 @@ p {	padding: 0 0 12px; }
 #loggin {
 	color: #767676;
 	font-size: 0.7em;
-}
-#loggin a:link,
-#loggin a:visited {
-	color: #000;
 }
 #search-form {
 	margin: 20px 0 10px;
@@ -118,17 +123,19 @@ p {	padding: 0 0 12px; }
 }
 #nav li {
 	display: inline;
-	padding: 0 20px;
-	color: #900010;
+	padding: 0 22px;
+	color: #e60123;
+	font-weight: bold;
+	font-size: 0.9em
 }
 #nav a:link,
 #nav a:visited {
-	color: #900010;
+	color: #e60123;
 	text-decoration: none;
 }
 #nav a:hover,
 #nav a:active {
-	color: #4b0008;
+	color: #900010;
 	text-decoration: none;
 }
 #content {
@@ -198,13 +205,17 @@ p {	padding: 0 0 12px; }
 .popular-pranks li {
 	float: left;
 	text-align: center;
-	padding: 10px;
+	padding: 15px;
 }
 /** From old css **/
 #title {
 	margin-bottom: 20px;
 }
 #title h2 {
+	font-family: “Trebuchet MS”, sans-serif;
+	color: #5caf43;
+	text-transform: uppercase;
+	font-size: 1.8em;
 	padding: 0;
 }
 #title #title-main {
@@ -239,30 +250,90 @@ p {	padding: 0 0 12px; }
 }
 #vids {
 	margin-top: 15px;
-	padding: 10px;
 	background-color: #EEE;
 	border: solid 1px #CCC;
+}
+#vids .vids-scroll {
+	overflow: auto;
+	height: 302px;
+	padding: 10px;
+}
+#vids span {
+	font-size: 0.7em;
+	float: right;
 }
 #mainContent { 
 	margin: 0 0 0 270px;
 }
-#vids h3,
-#mainContent h3 {
+#vids h3 { 
+	padding: 10px 10px 0; 
+	border-bottom: solid 1px #CCC;
+}
+#vids h3 {
 	color: #333;
 	font-weight: bold;
 	margin: 0 0 2px 0;
 }
+#mainContent h3 {
+	color: #007da5;
+	font-weight: normal;
+	letter-spacing: 1px;
+	font-size: 1.3em;
+}
+#author h3 {
+	border-bottom: solid 1px #CCC;
+	margin-bottom: 20px;
+}
+.video {
+	text-align: center;
+	margin-bottom: 35px;
+}
+.vid {
+	float: left;
+	margin-right: 15px;
+	width: 135px;
+}
+.vid h4 {
+	margin-top: 10px;
+}
+#vids .vid .info, .vid p {
+	line-height: 2.7em;
+	font-size: 0.8em;
+	color: #999;
+}
+#vids .vid { 
+	width: auto;
+	float: none;
+	margin: 0;
+}
+#vids .vid p {
+	float: left;
+	margin-right: 10px;
+}
+#vids .vid h4 {
+	margin-bottom: 5px;
+}
+#vids .vid .info {
+	
+}
+#vids .vid .info .author {
+	font-size: 0.8em;
+}
+.tools-list {
+	margin-bottom: 12px;
+}
 .tools-list li {
-	background-image: url(../images/tick.gif);
-	background-repeat: no-repeat;
-	background-position: 0 10px 5px;
-	margin-left: 10px;
-	padding-left: 20px;
+	list-style-type: disc;
+	margin-left: 20px;
 }
 #tag-cloud { 
   margin: 10px 0 10px 270px;
-  padding: 10px;
-  border: 1px solid #F7931E; 
+  border: 1px solid #969696; 
+}
+#tag-cloud h4 {
+	color: #007da5;
+	background-color: #969696;
+	padding: 10px;
 }
 .css1, .css2, .css3, .css4 { padding-right: 6px; }
 .css1 { font-size: 0.6em; }
@@ -522,11 +593,14 @@ form div.submit {
   width: 214px;
   padding: 0 0 0 150px;
 }
-form div input.inputText, form div textarea {
+form div input.inputText, form div textarea, form div input.wideText {
   border: 1px solid #BDC7D8;
   width: 200px;
   padding: 3px;
   margin: 0;
+}
+form div input.wideText {
+	width: 300px;
 }
 form div input.labelless, .labelless {
 	margin-left: 150px;
@@ -558,7 +632,13 @@ form div small {
   font-size: 88%;
   zoom: 1;
 }
-
+form div small ul {
+	margin: 3px 0 0 20px;
+}
+form div small li {
+	list-style-type: disc;
+	margin-top: 2px;
+}
 form.tool {
 	padding: 20px;
 }
@@ -633,7 +713,7 @@ form.tool {
 /** From old css **/
 #footer { 
 	padding: 0 5px;
-	width: 970xpx;
+	width: 970px;
 	margin: 20px auto 0;
 	text-align: left;
 } 

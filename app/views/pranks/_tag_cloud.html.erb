@@ -1,5 +1,5 @@
 <div id="tag-cloud">
-	<h4>Similar Pranks:</h4>
+	<h4>SIMILAR PRANKS</h4>
 	<%- tag_cloud @tags, %w(css5 css6 css7 css8) do |tag, css_class| -%>
 		<%= link_to tag.name, tag_path(tag.name), :class => css_class %>
 	<%- end -%>

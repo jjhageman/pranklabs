@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :videos
+
   # map.resources :comments
 
   map.resources :albums
@@ -19,11 +21,15 @@ ActionController::Routing::Routes.draw do |map|
         image.resources :comments
       end
     end
+    prank.resources :videos do |video|
+      video.resources :comments
+    end
   end
   
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete } do |user|
     user.resources :image, :controller => 'user_image'
     user.resources :pranks
+    user.resources :video
   end
   
   map.resource :sessions

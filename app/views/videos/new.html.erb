@@ -1,0 +1,25 @@
+<div id="title">
+  <h2><%= @prank.title %><span class="grey"> Add Prank Video</span></h2>
+  <p class="small-link"><%= link_to 'Back to prank', @prank %></p>
+</div>
+<%= error_messages_for :video %>
+
+<% form_for(@video, :url => prank_videos_path(@prank)) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="required">
+	<h2>Enter a YouTube or Vimeo video link</h2>
+    <%= f.label :video_url, 'Video URL:' %> <%= f.text_field :video_url, :class => 'inputText' %>
+	<small><strong>Examples:</strong>
+		<ul>
+	  		<li>YouTube: <em>http://www.youtube.com/watch?v=gEILFf2XSrM</em></li>
+	  		<li>Vimeo: <em>http://www.vimeo.com/726135</em></li>
+		</ul>
+	</small>
+  </div>
+
+  <div class="submit">
+    <%= f.submit 'Add' %>
+    <%= f.submit "Cancel", :id => "cancel" %>
+  </div>
+<% end %>

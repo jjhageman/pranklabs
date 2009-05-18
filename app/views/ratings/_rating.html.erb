@@ -1,3 +1,4 @@
+<span class="rate-count"><%= pluralize @prank.rated_count, 'rating' %></span>
 <span class="inline-rating">
 	<ul class="star-rating small-star">
 		<li class="current-rating" style="width:<%= (rating.rating_average.nil?) ? 0 : (rating.rating_average * 20).to_i %>%">Currently <%= rating.rating_average %>/5 Stars.</li>
@@ -10,4 +11,3 @@
 		<%- end -%>
 	</ul>
 </span>
-<span class="rate-count">(<%= pluralize @prank.rated_count, 'rating' %>)</span>
