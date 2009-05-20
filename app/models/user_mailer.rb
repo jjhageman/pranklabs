@@ -29,5 +29,6 @@ class UserMailer < ActionMailer::Base
       @subject     = "PrankLabs "
       @sent_on     = Time.now
       @body[:user] = user
+      content_type "text/html"
     end
 end

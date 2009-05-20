@@ -68,6 +68,7 @@ Rails::Initializer.run do |config|
 end
 
 require "will_paginate"
+require 'httparty'
 
 # Time::DATE_FORMATS[:comment] = "%b %d, %Y. %I:%M %p"
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:comment => "%b %d, %Y. %I:%M %p")
