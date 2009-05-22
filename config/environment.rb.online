@@ -5,7 +5,7 @@
 ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -67,7 +67,8 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :user_observer
 end
 
-require "will_paginate"
+require 'will_paginate'
+require 'rubygems'
 require 'httparty'
 
 # Time::DATE_FORMATS[:comment] = "%b %d, %Y. %I:%M %p"
