@@ -18,7 +18,7 @@ namespace :deploy do
   run "cd #{current_path} && rake thinking_sphinx:index"
   run "cd #{current_path} && rake thinking_sphinx:start"
   run "cd #{current_path} && chmod 755 #{chmod755}"
-  run "rm -rf #{current_path}/public/shared/images"
+  run "mkdir #{current_path}/public/shared"
   run "ln -s /home/prankla/pranklabs/public/shared/images #{current_path}/public/shared/images"
   cleanup
  end
