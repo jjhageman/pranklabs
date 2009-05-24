@@ -5,7 +5,7 @@
 </div>
 <div id="images">
   <%= link_to image_tag(@user.profile_image(:thumb), :class => 'profile-pic'), user_image_path(@user) %><br />
-  <%= link_to "Edit Image", edit_user_image_path(@user), :class => 'small-link' %>
+  <%= link_to "Edit Image", user_image_path(@user), :class => 'small-link' %>
 </div>
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>

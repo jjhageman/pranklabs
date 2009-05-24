@@ -8,7 +8,6 @@ class UserMailer < ActionMailer::Base
   def activation(user)
     setup_email(user)
     @subject    += 'Your account has been activated!'
-    @body[:url]  = "http://www.pranklabs.com/"
   end
   
   def forgot_password(user)
@@ -29,6 +28,7 @@ class UserMailer < ActionMailer::Base
       @subject     = "PrankLabs "
       @sent_on     = Time.now
       @body[:user] = user
+      @body[:url]  = "http://www.pranklabs.com/"
       content_type "text/html"
     end
 end
