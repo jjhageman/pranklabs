@@ -8,3 +8,4 @@ config/development.sphinx.conf
 db/*.sqlite3
 db/*.sql
 db/sphinx
+public/shared/images
