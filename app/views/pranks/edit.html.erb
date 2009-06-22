@@ -11,7 +11,7 @@
 <%- form_for(@prank) do |f| -%>
   <%= f.error_messages %>
   <div class="required">
-    <%= f.label :title, 'Prank Name:' %> <%= f.text_field :title, :maxlength => 20, :class => 'inputText' %>
+    <%= f.label :title, 'Prank Name:' %> <%= f.text_field :title, :maxlength => 30, :class => 'inputText' %>
 	<small>Prank title. 20 letters max.</small>
   </div>
   <div class="required">

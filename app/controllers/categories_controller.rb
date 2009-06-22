@@ -6,6 +6,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @remaining_categories = Category.find(:all, :conditions => "id != #{@category.id}")
-    @pranks = @category.pranks.paginate :per_page => 15, :page => params[:page]
+    @pranks = @category.pranks.paginate :per_page => 15, :order => 'rating_count DESC', :page => params[:page]
   end
 end

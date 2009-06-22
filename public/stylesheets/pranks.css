@@ -1,14 +1,17 @@
 @charset "UTF-8";
-body  {
+html {
 	font: 90% Helvetica, Arial, Verdana, sans-serif;
 	/*font: 90% "Lucida Grande",Tahoma,Arial,Sans-Serif;*/
 	/*font: 90% Georgia,"Nimbus Roman No9 L",serif;*/
 	/*font: 90% Verdana,'Lucida Grande',Arial,"Trebuchet MS",Helvetica,sans-serif;*/
-	background-color: #CFCFCF;
+	background: #e97117 url(../images/bg.png);
 	margin: 0;
 	padding: 0;
 	text-align: center;
 	color: #000000;
+}
+body {
+	background: transparent url(../images/texture.gif) no-repeat center top;
 }
 em {
 	font-style: italic;
@@ -17,46 +20,46 @@ h2 {
 	font-size: 1.2em;
 	font-weight: bold;
 	padding: 0 0 10px;
-	letter-spacing: -1px;
 	color: #333;
 }
 h2 .grey {
-	color: #999;
+	color: #ccc;
 }
 h3 {
 	font-weight: bold;
-	letter-spacing: -0.5px;
 	color: #333;
 }
 h4 {
 	font-size: 0.8em;
 	font-weight: bold;
 	color: #333;
+	line-height: 1.3em;
 }
 strong {
 	font-weight: 600;
 }
 a:link,
 a:visited {
-	color: #FF5500;
+	color: #e60123;
 	text-decoration: underline;
 }
 a:hover,
 a:active {
 	text-decoration: none;
+	color: #900010;
 }
-p {	padding: 0 0 12px; }
+p {	
+	padding: 0 0 12px;
+	line-height: 1.4em; 
+}
 #container { 
 	width: 1042px;
-	background: #e97117 url(../images/bg.png);
 	margin: 0 auto;
 	text-align: left;
 }
 #wrapper {
-	background: transparent url(../images/texture.gif) no-repeat center top;
 }
 #wrapper-b {
-	background: transparent url(../images/texture_bottom.gif) no-repeat center bottom;
 	padding: 0 36px 70px;
 }
 #header {
@@ -123,7 +126,7 @@ p {	padding: 0 0 12px; }
 }
 #nav li {
 	display: inline;
-	padding: 0 22px;
+	padding: 0 21px;
 	color: #e60123;
 	font-weight: bold;
 	font-size: 0.9em
@@ -166,14 +169,14 @@ p {	padding: 0 0 12px; }
 }
 #feature-prank h1 a:hover,
 #feature-prank h1 a:active {
-	color: #B35A00;
+	color: #E60123;
 }
 #feature-prank h1 .author {
 	color: #807F7F;
 	font-size: 10px;
 }
 #feature-prank h1 .author a {
-	color: #B35A00;
+	color: #E60123;
 	font-size: 10px;
 }
 #feature-prank .left-col {
@@ -206,6 +209,7 @@ p {	padding: 0 0 12px; }
 	float: left;
 	text-align: center;
 	padding: 15px;
+	width: 100px;
 }
 /** From old css **/
 #title {
@@ -276,8 +280,6 @@ p {	padding: 0 0 12px; }
 }
 #mainContent h3 {
 	color: #007da5;
-	font-weight: normal;
-	letter-spacing: 1px;
 	font-size: 1.3em;
 }
 #author h3 {
@@ -483,7 +485,7 @@ margin: 0 0.4em 0 -0.4em;
 	margin: 5px 0;
 	font-size: 0.75em;
 	font-weight: bold;
-	/*position: absolute;*/
+	line-height: 1.3em;
 }
 .album .info .author, .prank-image .info .author {
 	font-weight: normal;
