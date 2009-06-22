@@ -20,6 +20,7 @@ namespace :deploy do
   run "cd #{current_path} && chmod 755 #{chmod755}"
   run "mkdir #{current_path}/public/shared"
   run "ln -s /home/prankla/pranklabs/public/shared/images #{current_path}/public/shared/images"
+  run "ln -s /home/prankla/prankblog #{current_path}/public/blog"
   cleanup
  end
 end

@@ -12,7 +12,7 @@
 		<%= render :partial => 'ratings/rating', :object => @prank %>
 	</div>
 	<div id="author">
-		<h3>Creator:</h3> <%= link_to image_tag(@prank.user.profile_image(:tiny_square)), @prank.user %> <%= link_to @prank.user.login, @prank.user %>
+		<%= link_to image_tag(@prank.user.profile_image(:tiny_square)), @prank.user %> CREATOR: <%= link_to @prank.user.login, @prank.user %>
 	</div>
 	<div id="vids">
 		<h3><span><%= link_to '+Add video', new_prank_video_path(@prank) %></span>Videos</h3>
@@ -39,7 +39,7 @@
 <%- unless !logged_in? and @comments.empty? -%>
 <div id="comments">
 	<div id="comments-top">
-		<h3><span id="comment-count"><%= pluralize @comments.size, 'Comment' unless @comments.empty? %></span>
+		<h3><span id="comment-count">COMMENTS</span>
 		<%- if logged_in? -%>
 			<span id="new_comment_link"><%= link_to_remote "Add Comment", :url => new_prank_comment_path(@prank), :method => :get %></span>
 		<%- end -%></h3>
