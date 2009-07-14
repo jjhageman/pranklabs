@@ -1,6 +1,8 @@
 class PranksController < ApplicationController
   before_filter :login_required, :only => [ :edit, :update, :create, :new ]
   before_filter :correct_user_required, :only => [ :edit, :update ], :unless => :admin?
+  before_filter :ensure_current_prank_url, :only => :show
+  
   
   # GET /pranks
   # GET /pranks.xml
@@ -18,7 +20,7 @@ class PranksController < ApplicationController
   # GET /pranks/1
   # GET /pranks/1.xml
   def show
-    @prank = Prank.find(params[:id], :include => {:comments => :user})
+    redirect_to @prank, :status => 301 if @prank.has_better_id?
     @tags = @prank.tag_counts
     @comments = Comment.find(:all, :conditions => "prank_id = #{@prank.id}", :order => "created_at DESC")
     respond_to do |format|
@@ -111,5 +113,10 @@ class PranksController < ApplicationController
       flash[:notice] = "You don't have permission to edit that prank."
       redirect_to pranks_path
     end
+  end
+
+  def ensure_current_prank_url
+    @prank = Prank.find(params[:id], :include => {:comments => :user})
+    redirect_to @prank, :status => :moved_permanently if @prank.has_better_id?
   end
 end

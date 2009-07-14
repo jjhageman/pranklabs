@@ -7,6 +7,7 @@ class Prank < ActiveRecord::Base
   has_and_belongs_to_many :categories
   acts_as_rated
   acts_as_taggable
+  has_friendly_id :title, :use_slug => true
   validates_presence_of :title, :summary, :instructions, :tools
   validates_uniqueness_of :title
   serialize :tools

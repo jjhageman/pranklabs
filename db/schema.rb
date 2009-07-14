@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090421044412) do
+ActiveRecord::Schema.define(:version => 20090714032148) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(:version => 20090421044412) do
     t.string   "cached_tag_list"
   end
 
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "zipcode"
+    t.datetime "start_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "rating_statistics", :force => true do |t|
     t.integer "rated_id"
     t.string  "rated_type"
@@ -97,6 +106,18 @@ ActiveRecord::Schema.define(:version => 20090421044412) do
 
   add_index "ratings", ["rated_type", "rated_id"], :name => "index_ratings_on_rated_type_and_rated_id"
   add_index "ratings", ["rater_id"], :name => "index_ratings_on_rater_id"
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope",          :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "stats_ratings", :force => true do |t|
     t.integer "rater_id"
@@ -151,7 +172,7 @@ ActiveRecord::Schema.define(:version => 20090421044412) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count"
+    t.integer  "comments_count", :default => 0
     t.string   "type"
   end
 
