@@ -89,6 +89,10 @@ p {
 	text-align: right;
 	padding: 10px;
 }
+#head-right {
+	font-size: 0.8em;
+	text-decoration: underline;
+}
 #loggin {
 	color: #767676;
 	font-size: 0.7em;
@@ -294,6 +298,13 @@ p {
 }
 .vid h4 {
 	margin-top: 10px;
+}
+.vid .tiny-pic {
+	width: 90px;
+	height: 70px;
+	background-color: #FFF;
+	border: solid 1px #CCC;
+	padding: 1px;
 }
 #vids .vid .info, .vid p {
 	line-height: 2.7em;

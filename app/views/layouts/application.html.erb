@@ -32,7 +32,7 @@
 			<div id="head-right">
 			  <span id="loggin">
 			  <%- if logged_in? -%>
-				Welcome, <%= h current_user.login %>! &#8226; <%= link_to_unless_current "My Account", user_path(current_user) %> &#8226; <%= link_to "Logout", logout_path %>
+				Welcome, <%= h current_user.login %>! &#8226; <%= link_to_unless_current "My Pranks", user_path(current_user) %> &#8226; <%= link_to "Logout", logout_path %>
 			  <%- else -%>
 				<%= link_to_unless_current "Login", login_path %> &#8226; Not a member? <%= link_to_unless_current "Sign Up", signup_path %>
 			  <%- end -%>
@@ -43,6 +43,7 @@
 						<%= submit_tag "Go", :name => nil, :class => 'button' %>
 					<%- end -%>
 				</div><!-- end #search -->
+				<%= link_to 'Visit our blog', '/blog/' %>
 			</div><!-- end #head-right -->
 			<ul id="nav">
 				<%- Category.find(:all).each do |c| -%>
