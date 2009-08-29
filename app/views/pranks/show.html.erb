@@ -34,6 +34,7 @@
 	<p><%=h @prank.targets %></p>
 	<h3>HOW-TO</h3>
 	<%= simple_format sanitize(@prank.instructions) %>
+	<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=c797a630-28b7-4baa-b4cf-ef3a24d1d2d6&amp;type=website&amp;post_services=email%2Cfacebook%2Ctwitter%2Cmyspace%2Cdigg%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Cfriendfeed%2Cfark%2Ctechnorati%2Cwindows_live%2Cblogger%2Cbebo%2Cybuzz%2Cyahoo_bmarks%2Cmixx%2Cpropeller%2Cwordpress%2Cnewsvine%2Cxanga%2Cslashdot"></script>
 </div>
 <%= render :partial => 'tag_cloud' unless @tags.blank? %>
 <%- unless !logged_in? and @comments.empty? -%>

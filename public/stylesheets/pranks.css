@@ -89,7 +89,7 @@ p {
 	text-align: right;
 	padding: 10px;
 }
-#head-right {
+#head-right a {
 	font-size: 0.8em;
 	text-decoration: underline;
 }

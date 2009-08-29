@@ -43,7 +43,7 @@
 						<%= submit_tag "Go", :name => nil, :class => 'button' %>
 					<%- end -%>
 				</div><!-- end #search -->
-				<%= link_to 'Visit our blog', '/blog/' %>
+				<%= link_to 'Visit our blog', '/blog/' %> <%= link_to image_tag('prank-blog.png'), '/blog/' %>
 			</div><!-- end #head-right -->
 			<ul id="nav">
 				<%- Category.find(:all).each do |c| -%>

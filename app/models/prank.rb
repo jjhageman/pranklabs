@@ -23,6 +23,16 @@ class Prank < ActiveRecord::Base
     indexes user.login, :as => :user_login
   end
   
+  def self.featured_prank
+    find(47)
+  rescue ActiveRecord::RecordNotFound
+    first
+  end
+  
+  def self.popular_pranks
+    find(:all, :order => 'rating_count DESC', :conditions => "id != #{featured_prank.id}", :limit => 7)
+  end
+  
    def profile_image(type=nil)
      image = primary_image || last_uploaded_image || nil
      case type

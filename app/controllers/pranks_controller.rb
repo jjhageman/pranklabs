@@ -7,9 +7,9 @@ class PranksController < ApplicationController
   # GET /pranks
   # GET /pranks.xml
   def index
-    @featured_prank = Prank.find(7)
+    @featured_prank = Prank.featured_prank
     @featured_tags = @featured_prank.tag_counts
-    @popular_pranks = Prank.find(:all, :order => 'rating_count DESC', :limit => 7)
+    @popular_pranks = Prank.popular_pranks
     tag_cloud
     respond_to do |format|
       format.html # index.html.erb

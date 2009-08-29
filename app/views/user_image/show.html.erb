@@ -1,6 +1,6 @@
 <% title "#{@user.login} | #{@title || 'Image'}"  %>
 <div id="title">
-  <%- if logged_in? -%>
+  <%- if logged_in? && !@user.image.blank? -%>
   <div id="title-right">
 	<h4>TOOLS</h4>
     <p>- <%= link_to 'Edit Photo', edit_user_image_path if current_user_or_admin?(@user) %></p>
