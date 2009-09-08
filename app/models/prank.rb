@@ -24,7 +24,7 @@ class Prank < ActiveRecord::Base
   end
   
   def self.featured_prank
-    find(47)
+    find(54)
   rescue ActiveRecord::RecordNotFound
     first
   end

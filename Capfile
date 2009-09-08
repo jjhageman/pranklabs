@@ -13,11 +13,11 @@ namespace :deploy do
 
  task :restart, :roles => :app do
   run "cd #{current_path}/log && rm mongrel.pid -f"
-  run "pkill -9 mongrel_rails -u prankla"
+  run "pkill -9 mongrel_rails -u prankla -l"
   run "cd #{current_path} && mongrel_rails start -e production -p #{mongrel_port} -d"
-  run "pkill -9 searchd -u prankla"
-  run "cd #{current_path} && rake thinking_sphinx:index"
-  run "cd #{current_path} && rake thinking_sphinx:start"
+  run "pkill -9 searchd -u prankla -l"
+  run "cd #{current_path} && rake thinking_sphinx:index --trace"
+  run "cd #{current_path} && rake thinking_sphinx:start --trace"
   run "cd #{current_path} && chmod 755 #{chmod755}"
   run "mkdir #{current_path}/public/shared"
   run "ln -s /home/prankla/pranklabs/public/shared/images #{current_path}/public/shared/images"
