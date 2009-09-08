@@ -130,10 +130,13 @@ p {
 }
 #nav li {
 	display: inline;
-	padding: 0 21px;
+	padding: 0 16px;
 	color: #e60123;
 	font-weight: bold;
 	font-size: 0.9em
+}
+#nav li#add-prank {
+	vertical-align: -9px;
 }
 #nav a:link,
 #nav a:visited {
