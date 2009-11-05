@@ -1,4 +1,9 @@
 <% title "PrankLabs | #{@user.login}"  %>
+<div id="invite-links">
+  	<%- if current_user.invitation_limit > 0 -%>
+	<p><%= link_to 'Invite a friend', new_invitation_path %> (<%= current_user.invitation_limit %> left)</p>
+	<%- end -%>
+  </div>
 <div id="title">
   <h2><%=h @user.login %></h2>
   <%- if current_user_or_admin?(@user) -%>

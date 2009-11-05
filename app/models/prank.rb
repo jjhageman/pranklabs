@@ -33,6 +33,18 @@ class Prank < ActiveRecord::Base
     find(:all, :order => 'rating_count DESC', :conditions => "id != #{featured_prank.id}", :limit => 7)
   end
   
+  def self.avg_num_votes
+    Rating.count.to_f/Prank.count.to_f
+  end
+  
+  def self.avg_rating
+    3
+  end
+  
+  def ranking
+    ((Prank.avg_num_votes*Prank.avg_rating)+(rating_count*rating_avg))/(Prank.avg_num_votes+rating_count)
+  end
+  
    def profile_image(type=nil)
      image = primary_image || last_uploaded_image || nil
      case type

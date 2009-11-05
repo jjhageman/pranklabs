@@ -148,6 +148,24 @@ p {
 	color: #900010;
 	text-decoration: none;
 }
+#invite-links {
+	float: right;
+}
+#beta-invite {
+	margin: 35px 0 20px 250px;
+	font-size: 1em;
+}
+.blurb {
+	font-size: 1em;
+	width: 95%;
+	margin: 0 auto;
+}
+#beta-invite ul {
+	margin: 0 0 30px 30px;
+}
+#beta-invite li {
+	list-style-type: disc;
+}
 #content {
 	background-color: #FFF;
 	padding: 25px;

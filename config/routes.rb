@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :invitations
+
   map.resources :videos
 
   # map.resources :comments
@@ -34,8 +36,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :sessions
   
+  map.join '/join', :controller => 'invitations', :action => 'join'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.signup '/signup/:invitation_token', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.forgot_password '/forgot_password', :controller => 'users', :action => 'forgot_password'

@@ -1,0 +1,23 @@
+<% title "PrankLabs | Join the Beta" %>
+<div id="title">
+  <h2>Join the Beta</h2>
+</div>
+<img src="images/prank-beaker.png" class="fltlft"/>
+<div id="beta-invite">
+
+<p>PrankLabs is looking for good pranks, but moreso we're looking for good pranksters. Sign up for the Beta to get access to the following:</p>
+<ul>
+	<li>Contribute Pranks</li>
+	<li>Build a Reputation</li>
+	<li>Rate Pranks</li>
+	<li>Join the Discussion</li>
+</ul>
+<% form_for @invitation do |f| %>
+  <%= f.error_messages %>
+  <div class="required">
+    <%= f.label :recipient_email, "Your email address:" %>
+    <%= f.text_field :recipient_email, :class => 'inputText' %>
+  </div>
+  <div class="submit"><%= f.submit "Join" %></div>
+<% end %>
+</div>

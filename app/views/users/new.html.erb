@@ -5,6 +5,7 @@
 <%= error_messages_for :user %>
 <div id="member-login">
 	<% form_for :user, :url => users_path do |f| -%>
+		<%= f.hidden_field :invitation_token %>
 		<div class="required">
 			<%= f.label :login, 'Display Name:' %> <%= f.text_field :login, :class => 'inputText' %>
 		</div>

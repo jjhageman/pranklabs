@@ -1,6 +1,6 @@
 <div id="title">
   <h2>Member Login</h2>
-  <p class="small-link">Not a member yet? <%= link_to 'Sign Up', signup_path %></p>
+  <p class="small-link">Not a member yet? <%= link_to_unless_current "Join the Beta", join_path %></p>
 </div>
 <div id="member-login">
 <% form_tag sessions_path do -%>

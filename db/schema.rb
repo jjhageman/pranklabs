@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090714032148) do
+ActiveRecord::Schema.define(:version => 20091104220914) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(:version => 20090714032148) do
     t.integer  "album_id"
     t.integer  "comments_count",                :default => 0, :null => false
     t.integer  "author_id"
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "sender_id"
+    t.string   "recipient_email"
+    t.string   "token"
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pranks", :force => true do |t|
@@ -163,6 +172,8 @@ ActiveRecord::Schema.define(:version => 20090714032148) do
     t.integer  "pranks_count",                            :default => 0,         :null => false
     t.integer  "comments_count",                          :default => 0,         :null => false
     t.integer  "albums_count",                            :default => 0,         :null => false
+    t.integer  "invitation_id"
+    t.integer  "invitation_limit"
   end
 
   create_table "videos", :force => true do |t|

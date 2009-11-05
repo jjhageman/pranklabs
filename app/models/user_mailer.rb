@@ -1,4 +1,16 @@
 class UserMailer < ActionMailer::Base
+  
+  def invitation(invitation, signup_url)
+    @sent_on     = Time.now
+    @recipients  = "#{invitation.recipient_email}"
+    @subject = 'Your friend has invited you to preview PrankLabs'
+    @from = invitation.sender.email
+    @body[:invitation] = invitation
+    @body[:signup_url] = signup_url
+    content_type "text/html"
+    invitation.update_attribute(:sent_at, Time.now)
+  end
+  
   def signup_notification(user)
     setup_email(user)
     @subject    += 'Please activate your new account'

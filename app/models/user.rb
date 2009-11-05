@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_many :comments
   has_many :videos
+  has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+  belongs_to :invitation
   has_one :image
   # Virtual attribute for the unencrypted password
   attr_accessor :password
@@ -14,6 +16,8 @@ class User < ActiveRecord::Base
   validates_presence_of     :login, :email
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
+  validates_presence_of     :invitation_id, :message => 'is required'
+  validates_uniqueness_of   :invitation_id
   validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :login,    :within => 3..40
@@ -22,11 +26,12 @@ class User < ActiveRecord::Base
                             :with => EMAIL_REGEX,
                             :message => "must be a valid email address"
   validates_uniqueness_of   :login, :email, :case_sensitive => false
+  before_create :set_invitation_limit
   before_save :encrypt_password
   # before_create :make_activation_code 
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :password, :password_confirmation
+  attr_accessible :login, :email, :password, :password_confirmation, :invitation_token
   
   acts_as_state_machine :initial => :pending
   state :passive
@@ -74,6 +79,14 @@ class User < ActiveRecord::Base
   def self.authenticate(login, password)
     u = find_in_state :first, :active, :conditions => {:login => login} # need to get the salt
     u && u.authenticated?(password) ? u : nil
+  end
+  
+  def invitation_token
+    invitation.token if invitation
+  end
+  
+  def invitation_token=(token)
+    self.invitation = Invitation.find_by_token(token)
   end
 
   # Encrypts some data with the salt.
@@ -179,7 +192,7 @@ class User < ActiveRecord::Base
     end 
   end
 
-  protected
+protected
     # before filter 
     def encrypt_password
       return if password.blank?
@@ -209,4 +222,10 @@ class User < ActiveRecord::Base
     def make_password_reset_code
       self.password_reset_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
     end
+    
+private
+
+  def set_invitation_limit
+    self.invitation_limit = 5
+  end
 end

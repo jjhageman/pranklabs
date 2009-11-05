@@ -1,0 +1,14 @@
+<% title "PrankLabs | New Invitation" %>
+<div id="title">
+  <h2>Invite a Friend</h2>
+</div>
+<div id="member-login">
+<% form_for @invitation do |f| %>
+  <%= f.error_messages %>
+  <div class="required">
+    <%= f.label :recipient_email, "Friend's email address:" %>
+    <%= f.text_field :recipient_email, :class => 'inputText' %>
+  </div>
+  <div class="submit"><%= f.submit "Invite" %></div>
+<% end %>
+</div>
