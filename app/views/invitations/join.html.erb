@@ -2,22 +2,20 @@
 <div id="title">
   <h2>Join the Beta</h2>
 </div>
-<img src="images/prank-beaker.png" class="fltlft"/>
+<img src="images/prank-beaker.png" class="fltlft beaker"/>
 <div id="beta-invite">
 
-<p>PrankLabs is looking for good pranks, but moreso we're looking for good pranksters. Sign up for the Beta to get access to the following:</p>
+<h3>PrankLabs is looking for good pranks, but moreso we're looking for good pranksters. You should join us for the Pranklabs Beta. Here's why:</h3>
 <ul>
-	<li>Contribute Pranks</li>
-	<li>Build a Reputation</li>
-	<li>Rate Pranks</li>
-	<li>Join the Discussion</li>
+	<li><strong>Contribute Pranks</strong> - We're working to build the most thorough database of pranks on the Web and we'd like your help as we figure out how to do it best. Add your pranks and let us know what works, what doesn't and what can improve.</li>
+	<li><strong>Build a Reputation</strong> - Prank contributers have a chance to be recognized for both old and new pranks. Do you know all the classics? Become prolific by archiving them here. Are you creative? Add it to the database and make sure people know you thought it up first.</li>
+	<li><strong>Rate Pranks</strong> - Become a prank connoisseur and choose which pranks deserve to be pulled and which ones are best left undone.</li>
+	<li><strong>Join the Discussion</strong> - Add comments, images and video to pranks in the database. Brainstorm with the community to refine new pranks and discover the best way to pull them off. Afterwards, post the pictures and videos of your own attempts. </li>
 </ul>
 <% form_for @invitation do |f| %>
   <%= f.error_messages %>
-  <div class="required">
-    <%= f.label :recipient_email, "Your email address:" %>
-    <%= f.text_field :recipient_email, :class => 'inputText' %>
-  </div>
-  <div class="submit"><%= f.submit "Join" %></div>
+    <%= f.label :recipient_email, "Your email address:" %><br />
+    <%= f.text_field :recipient_email, :class => 'inputText' %><br />
+	<%= f.submit "Join" %>
 <% end %>
 </div>
