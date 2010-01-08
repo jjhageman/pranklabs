@@ -13,7 +13,7 @@ namespace :deploy do
 
  task :restart, :roles => :app do
   run "cd #{current_path}/log && rm mongrel.pid -f"
-  run "pkill -9 mongrel_rails -u prankla"
+  run "pkill -9 -f '4164 -d' -u prankla"
   run "cd #{current_path} && mongrel_rails start -e production -p #{mongrel_port} -d"
   run "pkill -9 searchd -u prankla"
   run "cd #{current_path} && rake thinking_sphinx:index --trace"
