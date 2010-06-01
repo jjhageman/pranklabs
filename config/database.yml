@@ -4,7 +4,7 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: pranklabs
+  database: pl
   pool: 5
   username: root
   password: old2flav
